@@ -41,11 +41,11 @@ function main() {
 
   impresora2.encolar('mundo')
 
-  impresora2.verCola()
+  impresora1.verCola()
 
-  impresora1.imprimir()
+  impresora2.imprimir()
 
-  impresora2.verCola()
+  impresora1.verCola()
 }
 
 main()

@@ -27,7 +27,7 @@ class Caja implements IProducto {
     for (const producto of this.productos) {
       total += producto.getPrecio()
     }
-    return total
+    return total * (1 - 0.01 * this.productos.length)
   }
 }
 
@@ -38,7 +38,10 @@ function main() {
   comboSonido.agregar(new Producto('cables', 10))
 
   const comboPc = new Caja('combo pc')
-  comboPc.agregar(new Producto('monitor', 200))
+
+  const monitor = new Producto('monitor', 200)
+  comboPc.agregar(monitor)
+  comboPc.agregar(new Producto('PC', 300))
   comboPc.agregar(new Producto('teclado', 50))
   comboPc.agregar(new Producto('mouse', 30))
   comboPc.agregar(comboSonido)
