@@ -1,47 +1,56 @@
+class Medicion {
+  constructor(public temperatura: number, public humedad: number, public presion: number) {}
+}
+
 interface ISensor {
-  medir: () => string
+  medir: () => Medicion
 }
 
-class SensorXML {
-  getMedicionXML() {
-    return `
-  <temperatura> 25 </temperatura>
-  <humedad> 50 </humedad>
-  <presion> 100 </presion>
-  `
+class SensorString {
+  // temperatura|humedad|presion
+  getMedicion() {
+    return `31|50|1000`
   }
 }
 
-class SensorJSON {
-  getMedicionJSON() {
-    return `
-  {
-    "temperatura": 25,
-    "humedad": 50,
-    "presion": 100
+class SensorStringAdapter implements ISensor {
+  constructor(private sensor: SensorString) {}
+  medir(): Medicion {
+    const res = this.sensor.getMedicion()
+    const valores = res.split('|')
+    const medicion = new Medicion(Number(valores[0]), Number(valores[1]), Number(valores[2]))
+    return medicion
   }
-  `
-  }
-}
-
-class XMLSensorAdapter implements ISensor {
-  private sensor: SensorXML
-  constructor(sensor: SensorXML) {
-    this.sensor = sensor
-  }
-  medir(): string {}
 }
 
 class Controladora {
   private sensor: ISensor
+
   constructor(sensor: ISensor) {
     this.sensor = sensor
   }
+
   obtenerStatus() {
     const medicion = this.sensor.medir()
-    const object = JSON.parse(medicion)
-    if (object.temperatura > 30 || object.humedad > 80 || object.presion > 120) {
-      return 'Alerta'
+
+    if (medicion.temperatura > 30) {
+      return 'Alerta de temperatura'
+    }
+
+    if (medicion.humedad > 80) {
+      return 'Alerta de humedad'
+    }
+
+    if (medicion.presion > 1200) {
+      return 'Alerta de presion'
     }
   }
 }
+
+function main() {
+  const sensor = new SensorStringAdapter(new SensorString())
+  const controladora = new Controladora(sensor)
+  console.log(controladora.obtenerStatus())
+}
+
+main()
