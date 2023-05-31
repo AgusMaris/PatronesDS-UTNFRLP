@@ -8,7 +8,8 @@
     "start:composite": "ts-node src/estructurales/composite.ts",
     "start:singleton": "ts-node src/creacionales/singleton.ts",
     "start:template-method": "ts-node src/comportamiento/template_method.ts",
-    "start:adapter": "ts-node src/estructurales/adapter.ts"
+    "start:adapter": "ts-node src/estructurales/adapter.ts",
+    "start:strategy": "ts-node src/comportamiento/strategy.ts"
   },
   "keywords": [],
   "author": "",
