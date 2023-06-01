@@ -4,7 +4,9 @@ Repositorio con el codigo enseñado en la materia Diseño de Sistemas para expli
 
 El lenguaje utilizado es Typescript y para correrlo pueden instalar [NodeJS](https://nodejs.org/es) o tambien utilizar el playground de [Typescript](https://www.typescriptlang.org/play) pegando el codigo del patron que deseen ejecutar
 
-En caso de que lo corran en sus maquinas, los comandos para correr cada patron son los siguientes:
+En caso de que lo corran en sus maquinas, recuerden instalar las dependencias necesarias con el comando ``npm install``
+
+Los comandos para correr cada patron son los siguientes:
 ```
 npm run start:composite
 npm run start:singleton
