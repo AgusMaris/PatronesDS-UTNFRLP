@@ -12,6 +12,7 @@ abstract class Registro {
   private guardarBD(): void {
     console.log('Guardando en BD')
   }
+
   abstract validar(): boolean
   abstract antesGuardar(): void
   abstract despuesGuardar(): void
@@ -80,7 +81,7 @@ class Post extends Registro {
 }
 
 function main() {
-  const usuario = new Usuario('Juan', 'Perez')
+  const usuario = new Usuario('Ju', 'Perez')
   usuario.guardar()
   const post = new Post('Hola mundo')
   post.guardar()
